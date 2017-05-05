@@ -7,6 +7,8 @@ TODO:
 
 4、rxjava、rxandroid
 
+5、git学习
+
 
 
 3.开源技术框架选用
