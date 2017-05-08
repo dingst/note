@@ -1,0 +1,21 @@
+1、ButterKnife Zelezny
+ButterKnife 注解生成器，使用起来非常简单方便，使用ButterKnife的有福了！
+
+3、GsonFormat
+现在大多数服务端api都以json数据格式返回，而客户端需要根据api接口生成相应的实体类，这个插件把这个过程自动化了，赶紧使用起来吧。
+
+4、Android Parcelable Code Generator
+Android中的序列化有两种方式，分别是实现Serializable接口和Parcelable接口，但在Android中是推荐使用Parcelable，
+只不过我们这种方式要比Serializable方式要繁琐，那么有了这个插件一切就ok了。
+
+JsonOnlineViewer
+在Android Studio中请求、调试接口
+
+genymotion
+速度较快的android模拟器
+
+RemoveButterKnife
+
+github:PermissionsDispatcher plugin
+自动生成6.0权限的代码
+
