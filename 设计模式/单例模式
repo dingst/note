@@ -1,0 +1,5 @@
+
+怎么保证一个类单例模式，不能使用new方法构造函数：构造函数私有，private。
+
+单例模式的七种写法
+http://cantellow.iteye.com/blog/838473
