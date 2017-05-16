@@ -2,8 +2,9 @@
 Retrofit2 完全解析 探索与okhttp之间的关系
 http://blog.csdn.net/lmj623565791/article/details/51304204
 
-Retrofit2.0+okhttp3实现缓存
-http://blog.csdn.net/u014316462/article/details/52587946
+Retrofit2.0+okhttp3实现缓存，结合看下面的两篇文章
+http://blog.csdn.net/changsimeng/article/details/54668884
+http://blog.csdn.net/jdsjlzx/article/details/51482603
 
 retrofit2中判断当前运行的环境代码：
 
