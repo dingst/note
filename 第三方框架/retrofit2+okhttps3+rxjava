@@ -6,6 +6,8 @@ Retrofit2.0+okhttp3实现缓存，结合看下面的两篇文章
 http://blog.csdn.net/changsimeng/article/details/54668884
 http://blog.csdn.net/jdsjlzx/article/details/51482603
 
+http://www.jianshu.com/p/6b3daeda1eed
+
 retrofit2中判断当前运行的环境代码：
 
 class Platform {
