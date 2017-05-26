@@ -1,4 +1,5 @@
-TODO: 2、ffmpeg
+TODO: 整理到demoapp中 http://www.jb51.net/article/104090.htm
+2、ffmpeg
 
 3、tablayout
 
