@@ -8,6 +8,9 @@ http://blog.csdn.net/jdsjlzx/article/details/51482603
 
 http://www.jianshu.com/p/6b3daeda1eed
 
+Retrofit+RxJava 优雅的处理服务器返回异常、错误
+http://blog.csdn.net/jdsjlzx/article/details/51882661
+
 retrofit2中判断当前运行的环境代码：
 
 class Platform {
