@@ -1,4 +1,7 @@
-TODO: 整理到demoapp中 http://www.jb51.net/article/104090.htm
+TODO: Android点击EditText文本框之外 整理到demoapp中 http://www.jb51.net/article/104090.htm
+
+1、版本检测和文件下载功能，支持断点续传
+
 2、ffmpeg
 
 3、tablayout
