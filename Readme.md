@@ -1,4 +1,12 @@
-TODO: Android点击EditText文本框之外 整理到demoapp中 http://www.jb51.net/article/104090.htm
+TODO:
+
+仿微信发布朋友圈里的图片选择器
+https://github.com/malijie/PhotoPicker-master
+图片压缩上传
+https://github.com/Curzibn/Luban
+
+
+Android点击EditText文本框之外 整理到demoapp中 http://www.jb51.net/article/104090.htm
 
 1、版本检测和文件下载功能，支持断点续传
 
