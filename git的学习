@@ -1,1 +1,28 @@
 git的常用命令：
+http://www.cnblogs.com/mengdd/p/4153773.html
+
+需要注意的地方：
+git pull
+     fetch from a remote repo and try to merge into the current branch.
+     pull == fetch + merge FETCH_HEAD
+     git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
+     如果使用--rebase参数,它会执行git rebase来取代原来的git merge.
+  
+ 
+git rebase
+     --rebase不会产生合并的提交,它会将本地的所有提交临时保存为补丁(patch),放在”.git/rebase”目录中,然后将当前分支更新到最新的分支尖端,
+     最后把保存的补丁应用到分支上.
+     rebase的过程中,也许会出现冲突,Git会停止rebase并让你解决冲突,在解决完冲突之后,用git add去更新这些内容,然后无需执行commit,只需要:
+     git rebase --continue就会继续打余下的补丁.
+     git rebase --abort将会终止rebase,当前分支将会回到rebase之前的状态.
+     
+ 通过上面两个命令的解释可以知道，在本地commit之后，执行git pull会出现merge以后产生一个新的commit，
+ 这样就很容易导致别人的代码和你的代码混合在一次提交中。为了解决这个问题，有两种方式可以运用：
+ 
+ 第一种，就是在commit之前，进行pull，这样本地库里没有你的代码，merge工作是在工作暂存区里进行，merge完以后，再commit，
+ 这个时候，commit的代码就是你自己的修改。
+ 
+ 第二种，就是commit之后，进行pull，这个时候需要加上--rebase 参数，这样是会把本地提交先暂存起来，
+ 然后更新代码，然后再merge你修改的代码到本地分支，这个过程不会产生新的commit。
+ 
+ 
