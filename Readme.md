@@ -1,14 +1,5 @@
 TODO:
 
-加密类修改，static块中加载provider，并且
- private static Provider provider = new BouncyCastleProvider();
-
-    static {
-        Security.addProvider(provider);
-    }
-    // 初始化cipher 加密解密算法
-							enCipher = Cipher.getInstance(algorithmStr, provider);
-
 仿微信发布朋友圈里的图片选择器
 https://github.com/malijie/PhotoPicker-master
 图片压缩上传
