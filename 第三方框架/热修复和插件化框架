@@ -1,0 +1,5 @@
+
+Solution to implement multi apk dynamic loading and hot fixing for Android App. 
+(实现Android App多apk插件化和动态加载，支持资源分包和热修复)
+
+https://github.com/CtripMobile/DynamicAPK
