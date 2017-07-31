@@ -1,6 +1,8 @@
 git的常用命令：
 http://www.cnblogs.com/mengdd/p/4153773.html
 
+git 配置多个ssh key的方法 : http://www.cnblogs.com/strawhat-Jochkie/p/6347304.html
+
 需要注意的地方：
 git pull
      fetch from a remote repo and try to merge into the current branch.
