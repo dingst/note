@@ -1,0 +1,9 @@
+1、mac终端命令查看隐藏的.svn文件
+
+defaults write com.apple.Finder AppleShowAllFiles YES
+在终端中执行以上命令，然后在Finder上alt＋右键，点重新开启，就可以查看文件夹下的隐藏文件
+
+如果想重新隐藏，可以执行
+defaults write com.apple.Finder AppleShowAllFiles NO
+同上重启Finder
+
