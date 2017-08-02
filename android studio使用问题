@@ -1,0 +1,11 @@
+1、 idea下git和svn切换问题
+使用idea工具进行开发，有时需要使用github  有时又需要svn那如何进行切换它们呢（Idea选择了Git就没有了svn，相反也是），解决方法很简单：
+ 修改项目下.idea目录的vcs.xml配置文件。 
+ <?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+  </component>
+</project>
+
+Git修改成svn即可完成切换（重启idea即可）。
