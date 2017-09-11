@@ -4,7 +4,10 @@ Solution to implement multi apk dynamic loading and hot fixing for Android App.
 
 https://github.com/CtripMobile/DynamicAPK
 
+阿里百川hotfix
 
+Atlas是伴随着手机淘宝的不断发展而衍生出来的一个运行于Android系统上的一个容器化框架，我们也叫动态组件化(Dynamic Bundle)框架
+https://github.com/alibaba/atlas
 
 滴滴插件化
 https://www.oschina.net/p/virtualapk?fromerr=8uaL1tEL
