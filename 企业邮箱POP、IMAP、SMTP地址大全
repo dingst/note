@@ -1,0 +1,73 @@
+企业邮箱POP、IMAP、SMTP地址大全【国内5大邮箱】
+时间：2017-05-20 16:08 作者：阿明SEO 点击:666次
+国内主流企业邮箱POP/SMTP/IMAP服务器地址，杭州企加科技整理小编吐血整理，如有遗漏，欢迎咨询补充，谢谢！么么哒！
+
+一、阿里云企业邮箱（原万网）
+阿里企业邮箱各个服务器地址及端口信息如下：
+协议	 服务器地址	 非加密服务器端口号	 加密服务器端口号
+POP3	pop3.mxhichina.com	 110	 995
+SMTP	smtp.mxhichina.com	 25	 465
+IMAP	imap.mxhichina.com	 143	 993
+LDAP	ldap.mxhichina.com	无	636
+CalDAV	caldav.mxhichina.com	无	443
+POP3、SMTP、IMAP的区别？
+推荐您使用加密端口连接，更加安全，使用时请注意加密端口是否已在您的本地电脑和网络中开放。
+ 
+二、腾讯企业邮箱 
+1、POP/SMTP/IMAP服务器地址。
+协议	国内	海外
+POP3	pop.exmail.qq.com	hwpop.exmail.qq.com
+SMTP	smtp.exmail.qq.com	hwsmtp.exmail.qq.com
+IMAP	imap.exmail.qq.com	hwimap.exmail.qq.com
+2、根据加密情况，选择合适的端口号。
+协议	端口	SSL/TSL
+POP3	110	995
+SMTP	25	465
+IMAP	 	993
+腾讯企业邮箱POP3/SMTP协议
+接收邮件服务器：pop.exmail.qq.com (端口 110)，使用SSL，端口号995
+发送邮件服务器：smtp.exmail.qq.com (端口 25)，使用SSL，端口号465
+ 
+海外用户可使用以下服务器
+接收邮件服务器：hwpop.exmail.qq.com (端口 110)，使用SSL，端口号995
+发送邮件服务器：hwsmtp.exmail.qq.com (端口 25)，使用SSL，端口号465
+ 
+腾讯企业邮箱IMAP协议
+接收邮件服务器：imap.exmail.qq.com  (端口 143)，使用SSL，端口号993
+发送邮件服务器：smtp.exmail.qq.com (端口 25)，使用SSL，端口号465
+ 
+海外用户可使用以下服务器
+接收邮件服务器：hwimap.exmail.qq.com  (端口 143)，使用SSL，端口号993
+发送邮件服务器：hwsmtp.exmail.qq.com (端口 25)，使用SSL，端口号465
+ 
+三、搜狐企业邮箱
+邮件发送服务器 (POP)：mail.sohu.net
+接收邮件服务器 (imap)：mail.sohu.net
+邮件发送服务器 (SMTP)：mail.sohu.net
+
+四、21CN企业邮箱
+1、 POP/SMTP/IMAP服务器地址。
+协议	国内	海外
+POP3	Pop.bnet.cn	Pop-enthk.bnet.cn
+SMTP	smtp.bnet.cn	smtp-enthk.bnet.cn
+IMAP	imap.bnet.cn	imap-enthk.bnet.cn
+2、根据加密情况，选择合适的端口号。
+协议	无加密	SSL/TSL
+POP3	110	995
+SMTP	25	465/587
+IMAP	143	993
+五、新浪企业邮箱
+IMAP设置：imap.sina.net
+北京机房网通用户设置：   SMTP:smtp.sina.net        POP3:pop3.sina.net
+北京机房电信用户设置：   SMTP:smtpx.sina.net      POP3:pop3x.sina.net
+广州机房电信用户设置：   SMTP:gzsmtp.sina.net    POP3:gzpop3.sina.net
+
+ 
+阿里云企业邮箱解析记录
+操作解析的域名	解析记录类型 	优先级 	解析记录值 
+　	 MX	5 	 mxn.mxhichina.com
+　	 MX	10	 mxw.mxhichina.com
+mail	 CNAME	　	mail.mxhichina.com
+imap	 CNAME	　	imap.mxhichina.com
+ pop3	 CNAME	　	 pop3.mxhichina.com
+spf	 TXT	　	v=spf1 include:spf.mxhichina.com -all
