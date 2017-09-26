@@ -1,2 +1,12 @@
-如果Activity 2中调用background Task中已经启动过的Activity Y，则background Task内占据屏幕并且将该Task下所有的栈保留当前的栈位置和顺序push进back Task形成新的结构。在Activity界面按返回键，则Activity Y出栈，Activity X占据屏幕。因此可见，由Activity2调用的Activity Y，但返回键后，回退显示的是Activity X。所以，即使在Activity执行setResult()函数，Activity2也是无法接收到的。
-      由于这种现象的存在，所以android系统处于某种保护机制，发现将要跳转的Activity的启动模式是singleTask时，若需要执行onActivityResult()函数则立即执行。这样就好理解多了
+1、startactivityforresult方法调用后，onActivityResult()立即执行问题
+
+如果Activity 2中调用background Task中已经启动过的Activity Y，
+则background Task内占据屏幕并且将该Task下所有的栈保留当前的栈位置和顺序push进back Task形成新的结构。
+在Activity界面按返回键，则Activity Y出栈，Activity X占据屏幕。因此可见，由Activity2调用的Activity Y，
+但返回键后，回退显示的是Activity X。所以，即使在Activity执行setResult()函数，Activity2也是无法接收到的。
+  由于这种现象的存在，所以android系统处于某种保护机制，发现将要跳转的Activity的启动模式是singleTask时，
+  若需要执行onActivityResult()函数则立即执行。这样就好理解多了。
+  
+  总结：将需要跳转的页面启动模式修改为标准模式或者singletop模式。
+  
+2、
