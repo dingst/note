@@ -1,0 +1,291 @@
+
+http://blog.csdn.net/zwluoyuxi/article/details/76229425
+
+
+第一种：root 为null
+
+View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_test_item,null)
+1
+这可能是我们用得比较多的一种方式，直接提供一个布局，返回一个View,根据上面的几个参数解释就知道，这种方式，没有指定新加载的View添加到哪个父容器，也没有root提供LayoutParams布局信息。这个时候，如果调用view.getLayoutParams() 返回的值为null。通过上面的测试，我们知道这种方式会导致RecyclerView Item 布局宽高失效。具体原因稍后再分析。
+
+第二种：root不为null,attachToRoot为false
+
+View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_test_item,parent,false)
+1
+这种方式加载，root不为null，但是attachToRoot 为 false，因此,加载的View不会添加到root,但是会用root生成的LayoutParams信息。这种方式就是上面我们说的 RecyclerView Item 宽高不会失效的加载方式。
+
+那么为什么第一种加载方式RecyclerView Item 布局宽高会失效？而第二种加载方式宽高不会失效呢？我们接下来从原来来分析一下。
+
+源码分析宽高失效原因
+
+1，首先我们来分析一下inflate 方法的源码：
+
+          ....
+          //前面省略
+          //result是最终返回的View
+          View result = root;
+
+            try {
+               ...
+               // 省略部分代码
+               final String name = parser.getName();
+
+                if (DEBUG) {
+                    System.out.println("**************************");
+                    System.out.println("Creating root view: "
+                            + name);
+                    System.out.println("**************************");
+                }
+
+                if (TAG_MERGE.equals(name)) {
+                    if (root == null || !attachToRoot) {
+                        throw new InflateException("<merge /> can be used only with a valid "
+                                + "ViewGroup root and attachToRoot=true");
+                    }
+
+                    rInflate(parser, root, inflaterContext, attrs, false);
+                } else {
+
+                   // 重点就在这个else代码块里了
+                    //解释1：首先创建了xml布局文件的根View，temp View 
+
+                    final View temp = createViewFromTag(root, name, inflaterContext, attrs);
+
+                    ViewGroup.LayoutParams params = null;
+                   // 解释2：判断root是否为null，不为null，就通过root生成LayoutParams
+                    if (root != null) {
+                        if (DEBUG) {
+                            System.out.println("Creating params from root: " +
+                                    root);
+                        }
+                        // Create layout params that match root, if supplied
+                        params = root.generateLayoutParams(attrs);
+                        // 解释3：如果在root不为null, 并且attachToRoot为false,就为temp View(也就是通过inflate加载的根View)设置LayoutParams.
+                        if (!attachToRoot) {
+                            // Set the layout params for temp if we are not
+                            // attaching. (If we are, we use addView, below)
+                            temp.setLayoutParams(params);
+                        }
+                    }
+
+                    if (DEBUG) {
+                        System.out.println("-----> start inflating children");
+                    }
+                     //解释4：加载根布局temp View 下面的子View
+
+                    rInflateChildren(parser, temp, attrs, true);
+
+                    if (DEBUG) {
+                        System.out.println("-----> done inflating children");
+                    }
+
+                    //解释5： 注意这一步，root不为null ，并且attachToRoot 为true时，才将从xml加载的View添加到root.
+                    if (root != null && attachToRoot) {
+                        root.addView(temp, params);
+                    }
+
+                    // 解释6：最后，如果root为null,或者attachToRoot为false,那么最终inflate返回的值就是从xml加载的View(temp)，否则，返回的就是root（temp已添加到root）
+                    if (root == null || !attachToRoot) {
+                        result = temp;
+                    }
+                }
+
+            }
+
+            ...
+            //省略部分代码
+            return result;
+        }
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+从上面这段代码就能很清楚的说明前面提到的两种加载方式的区别了。
+
+第一种加载方式 root为 null ：源码中的代码在 解释1 和 解释6 直接返回的就是从xml加载的temp View。
+
+第二种加载方式 root不为null ,attachToRoot 为false: 源码中在 解释3 和解释5 ，为temp 设置了通过root生成的LayoutParams信息，但是没有add 添加到root 。
+
+2，RecyclerView 部分源码分析
+
+分析了inflate的源码，那么接下来我们就要看一下RecyclerView 的源码了，看一下是怎么加载item 到 RecyclerView 的。由于RecyclerView的代码比较多，我们就通过关键字来找，主要找holer.itemView ，加载的布局就是ViewHolder中的itemView.
+
+通过源码我们找到了一个方法tryGetViewHolderForPositionByDeadline,其中有一段代码如下：
+
+            //1，重点就在这里了，获取itemView 的LayoutParams
+            final ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
+            final LayoutParams rvLayoutParams;
+            if (lp == null) {
+                // 2，如果itemView获取到的LayoutParams为null，就生成默认的LayoutParams
+                rvLayoutParams = (LayoutParams) generateDefaultLayoutParams();
+                holder.itemView.setLayoutParams(rvLayoutParams);
+            } else if (!checkLayoutParams(lp)) {
+                rvLayoutParams = (LayoutParams) generateLayoutParams(lp);
+                holder.itemView.setLayoutParams(rvLayoutParams);
+            } else {
+                rvLayoutParams = (LayoutParams) lp;
+            }
+
+            rvLayoutParams.mViewHolder = holder;
+            rvLayoutParams.mPendingInvalidate = fromScrapOrHiddenOrCache && bound;
+            return holder;
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+其实重点就在这个方法里面了，看一下我注释的两个地方，先获取itemView的LayoutParams,如果获取到的LayoutPrams为null 的话，那么就生成默认的LayoutParams。我们看一下生成默认LayoutParams的方法generateDefaultLayoutParams：
+
+ @Override
+    protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+        if (mLayout == null) {
+            throw new IllegalStateException("RecyclerView has no LayoutManager");
+        }
+        return mLayout.generateDefaultLayoutParams();
+    }
+1
+2
+3
+4
+5
+6
+7
+8
+注意，里面又调用了mLayout的generateDefaultLayoutParams方法，这个mLayout其实就是RecyclerView 的布局管理器LayoutManager.
+
+
+
+
+可以看到generateDefaultLayoutParams是一个抽象方法，具体的实现由对应的LayoutManager实现，我们用的是LinearLayoutManager,因此我们看一下LinearLayoutManager 的实现。
+
+ /**
+     * {@inheritDoc}
+     */
+    @Override
+    public LayoutParams generateDefaultLayoutParams() {
+        return new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+1
+2
+3
+4
+5
+6
+7
+8
+9
+卧槽，看到这儿大概就明白了item布局的宽高为什么会失效了，如果使用了默认生成LayoutParams这个方法，宽高都是WRAP_CONTENT。也就是说不管外面你的item根布局 宽高写的多少最终都是包裹内容。
+
+那么前面说的两种方式哪一种用了这个方法呢？其实按照前面的分析和前面的结果来看，我们推测第一种加载方式（root为null）使用了这个方法，而第二种加载方式（root不为null，attachToRoot为false）则没有使用这个方法。因此我们断点调试看一下：
+
+第一种加载方式：
+
+View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_test_item,null)
+1
+
+通过断点调试如上图，从itemView 中获取的layoutParams为null，因此会调用generateDefaultLayoutParams方法。因此会生成一个宽高都是wrap_content的LayoutParams,最后导致不管外面的item根布局设置的宽高是多少都会失效。
+
+第二种加载方式：
+
+View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_test_item,parent,false)
+1
+断点调试如下图： 
+
+
+从上图可以看出，这种加载方式从itemView是可以获取LayoutParams的，为RecyclerView的LayoutParams,因此就不会生成默认的LayoutParams，布局设置的宽高也就不会失效。
+
+总结
+
+本文了解了infalte 加载布局的几种写法，也解释了每个参数的意义。最后通过源码解释了两种加载布局的方式在RecyclerView 中为什么一种宽高会失效，而另一种则不会失效。因此在使用RecyclerView写列表的时候，我们应该使用item布局不会失效的这种方式：
+
+View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_test_item,parent,false)
+1
+可能有的同学会问，如果加载布局时第三个参数设置为true呢？结果会一样吗？你会发现，一运行就会崩溃 
+
+为什么呢?因为相当于 addView 了两次.RecyclerView中不应该这样使用。
