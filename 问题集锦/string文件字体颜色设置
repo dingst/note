@@ -1,0 +1,11 @@
+
+1.在string.xml文件中：
+[html] view plaincopy在CODE上查看代码片派生到我的代码片 
+<string name="exchange_txt_hint"><Data><![CDATA[请使用<font color="#ff0000"><b>%1$s</b></font>牛兑换<font color="#00ff00"><b>%2$s</b></font>%3$s 上网时长]]></Data></string>  
+
+2. 在Java代码中
+[java] view plaincopy在CODE上查看代码片派生到我的代码片 
+tv = (TextView) findViewById(R.id.tv);  
+        String exchange = getResources().getString(R.string.exchange_txt_hint);  
+  
+                tv.setText(Html.fromHtml(exchange));  
