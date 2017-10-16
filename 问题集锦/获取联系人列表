@@ -1,0 +1,3 @@
+获取联系人列表不能使用ContactsContract.Contacts.CONTENT_URI，这个是获取联系人信息，不能显示一个联系人的多个号码；
+
+应该使用的是ContactsContract.CommonDataKinds.Phone.CONTENT_URI，这个是获取手机号码的列表，可以显示出一个联系人的多个号码。
