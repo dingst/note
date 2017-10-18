@@ -1,2 +1,7 @@
 1、val或var声明变量，val表示不可变量，var表示可变变量；
 
+2、Kotlin 跟 findViewById 的类型推导冲突问题
+http://www.jianshu.com/p/a985c20fb1b4
+
+3、kotlin省略findviewById
+http://blog.csdn.net/feiyukill/article/details/72781965
