@@ -42,3 +42,38 @@ setOutsideTouchable
 
 UIUtils.setPopupWindowTouchModal(popupWindow, false);
 
+
+问题：切换界面，但是PopupWindow暂时不需要dismiss的情况，如何处理：
+
+链接地址：http://blog.csdn.net/u010929231/article/details/53445132
+
+摘要：解决方案就是在Activity onPause的时候，手动取消PopupWindow的动画：
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mPopupWindow != null && mPopupWindow.isShowing()) {
+            mPopupWindow.setAnimationStyle(0);
+            mPopupWindow.update()
+        }
+    }
+但是切换回来，我们应该再次把动画效果加上：
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mPopupWindow != null) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mPopupWindow.setAnimationStyle(R.style.PopupWindowFilter);
+                    mPopupWindow.update();
+                }
+            }, 200);
+        }
+    }
+
+onResume()方法里之所以要延时200ms操作，是因为要在onResume行为结束后再将动画加上，否则会因为太早导致切换回来PopupWindow还会再次执行显示的动画。
+
+
+
