@@ -3,3 +3,23 @@
 
 单例模式的七种写法
 http://cantellow.iteye.com/blog/838473
+
+
+5）静态内部类单例模式
+
+public class Singleton {  
+      private Singleton (){
+      }
+      public static final Singleton getInstance() {  
+          return SingletonHolder.INSTANCE;  
+      } 
+      /**
+      *静态内部类
+      */
+      private static class SingletonHolder {  
+      private static final Singleton INSTANCE = new Singleton();  
+      }   
+  }  
+这种是推荐使用的单例模式实现方式。当第一次加载Singleton类时并不会初始化INSTANCE，
+只有在第一次调用getInstance方法时才会导致INSTANCE被初始化。这种方式不仅能够保证线程安全，
+也能保证单例对象的唯一性，同时也延长了单例的实例化。
