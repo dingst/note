@@ -1,0 +1,4 @@
+Cipher.so
+该库提供了一种将敏感数据加密到原生 .so 库的简单方法
+
+https://github.com/MEiDIK/Cipher.so
