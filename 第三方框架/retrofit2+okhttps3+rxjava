@@ -6,6 +6,45 @@ https://github.com/ReactiveX/RxJava
 
 https://github.com/ReactiveX/RxAndroid
 
+rxjava生命周期管理
+https://github.com/trello/RxLifecycle
+
+看下使用RxLifecycle需要依赖的库：
+
+// RxLifecycle基础库
+compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+
+// Android使用的库，里面使用了Android的生命周期方法
+// 内部引用了基础库，如果使用此库则无需再引用基础库
+compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
+
+// Android组件库，里面定义了例如RxAppCompatActivity、RxFragment之类的Android组件
+// 内部引用了基础库和Android库，如果使用此库则无需再重复引用
+compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+
+// Android使用的库，继承NaviActivity使用
+compile 'com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0'
+
+// Android使用的库，继承LifecycleActivity使用
+// 需要引入Google的仓库支持，用法和rxlifecycle-navi类似
+compile 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:2.1.0'
+
+// Google的仓库支持
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
+    }
+}
+
+// 支持Kotlin语法的RxLifecycle基础库
+compile 'com.trello.rxlifecycle2:rxlifecycle-kotlin:2.1.0'
+
+// 支持Kotlin语法的Android库
+compile 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.1.0'
+
+
+
 
 
 Retrofit2 完全解析 探索与okhttp之间的关系
