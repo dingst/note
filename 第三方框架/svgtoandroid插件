@@ -1,0 +1,5 @@
+
+
+svgandroid 插件
+安装：File -> Setting -> Plugins -> Browser repositories 
+-> 搜“svg2VectorDrawable” -> 安装并重启Android Studio，再次进来后顶部工具栏会多一个图标：
