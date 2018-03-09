@@ -1,0 +1,9 @@
+android 8.0 问题：
+
+1, 下载安装app的时候，需要添加请求安装权限；
+
+2，创建自定义通知，需要添加channelid；
+参见：https://github.com/Justson/AgentWeb/blob/master/agentweb-download/src/main/java/com/just/agentweb/download/DownloadNotifier.java
+
+
+
