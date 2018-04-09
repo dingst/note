@@ -2,3 +2,12 @@
 lottie
 https://github.com/airbnb/lottie-android
 Lottie Android 初探   http://blog.csdn.net/vitamio/article/details/70046998
+
+开发也能改 Lottie 动画
+https://mp.weixin.qq.com/s/zWrIwY3iZWP2dbiVnKy7aA
+
+LottieFiles 的网站，其内提供了很多设计师上传的 Lottie 动画，并提供预览的效果，只要我们看中了，就可以下载下来使用，非常的方便
+https://www.lottiefiles.com
+
+ Lottie 动画的编辑器：Lottie-editor
+ https://github.com/sonaye/lottie-editor
