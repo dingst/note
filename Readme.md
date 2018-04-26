@@ -1,4 +1,7 @@
 
+写markdown 语法的工具，可以边写边预览的。
+Typora https://www.typora.io/
+
 picasa图片查看器，可以看像素是否一致
 
 
