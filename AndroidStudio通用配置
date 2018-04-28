@@ -1,0 +1,44 @@
+1> AS 统一版本 3.1.2正式版(以后组长发起统一升级)
+
+     1.1> 国内地址：http://www.androiddevtools.cn/
+
+     1.2> 官方地址：https://developer.android.google.cn/studio/
+
+2> gradle 统一版本  4.4(以后组长发起统一升级)
+
+3> 统一AS自带格式化 进行代码统一格式化
+
+3>logCat 颜色 调节 ： Setting  搜索 logcat
+
+4> 大小写敏感调节 ： Setting  搜索 case sensitive  修改为 None 
+
+5>自动打包设置 ：      Setting 搜索 auto import   复选框 全选
+
+6>单行注释格式缩进 : Setting 搜索 comment at first  位置：java →Wrapping and Braces
+
+7>新建文件在头部自动填写作者和日期：Setting 搜索 File and code Templates，选择Includes-File Header,添加
+
+/**
+* Created by ${USER} on ${DATE}.
+*/
+8>统一编码格式：Setting 搜索File Encodings，将所有的Encoding改为UTIF-8
+
+9>高亮显示变量和方法：
+
+    Editor - Color Scheme - General - Code - Identifier under caret
+
+    Editor - Color Scheme - General - Code - Identifier under caret（write）
+
+    修改 Background 和 Error stripe mark，设置一个比较醒目的颜色（如 B10027）
+
+
+
+Git 提交前，务必坚持
+
+1> 删除无用变量声明和代码
+
+2> 保留代码采用规范约定方式注释保留
+
+3> 取消删除TODO标志
+
+4> 所有修改过的代码全局格式化， 包括资源文件
