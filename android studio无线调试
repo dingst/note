@@ -1,0 +1,35 @@
+我们经常使用USB来进行ADB的调试。然而，我们有可能用Wi-Fi，请看下面
+
+使你的Android设备和笔记本都连上同一个Wi-Fi网络。其实并不是所有的网络都支持，你也许需要一个支持adb的防火墙配置。
+
+注意:如果你尝试连接一个穿戴设备，那么关闭蓝牙，强制使用Wi-Fi进行连接。
+
+将你的手机通过USB数据线和电脑连接起来。
+
+打开Terminal终端，使设备监听TCP/IP一个连接，端口号为5555.
+
+$adb tcpip 5555
+
+将设备数据线拔下。
+
+找到你Android设备的IP地址。例如，一台Nexus设备，你可以依次打开，设置 > 关于设备 > 状态 > IP地址，或者在穿戴设备上，你也可以在设置 > Wi-Fi设置 > 高级 > IP地址。
+连接到设备，通过IP地址进行验证。
+
+$ adb connect <\device-ip-address>
+
+确保你的主机电脑已经连接到了目标设备：
+
+$ adb devices 
+List of devices attached 
+<\device-ip-address>:5555 device
+
+现在你可以尝试无线调试啦！~
+
+如果失去adb连接： 
+1. 确保你的主机和移动设备一直处于同一个Wi-Fi网络里。 
+2. 重试上述步骤。 
+3. 如果都不起作用，那么重置你的adb：
+
+$ adb kill-server
+
+$ adb start-server
