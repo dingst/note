@@ -33,3 +33,14 @@ git rebase
  然后更新代码，然后再merge你修改的代码到本地分支，这个过程不会产生新的commit。
  
  
+ 1、git 删除历史某次提交
+ git rebase -i "commit id"^
+ ”commit id”替换为想要删除的提交的”commit id”，需要注意最后的^号，意思是commit id的前一次提交
+ 
+ 然后在编辑框中删除你想要删除的提交所在行，然后保存退出就好啦，如果有冲突的需要解决冲突。接下来，执行以下命令，将本地仓库提交到远程库就完成了：
+
+git push origin master -f
+
+
+
+
