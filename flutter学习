@@ -1,0 +1,6 @@
+
+1，Flutter去除右上角Debug标签 https://www.jianshu.com/p/2073fcf7562a
+debugShowCheckedModeBanner: false,  // 设置这一属性即可 
+
+2，isScrollable: false的时候，TabBar的宽度会填充屏幕宽度。
+
