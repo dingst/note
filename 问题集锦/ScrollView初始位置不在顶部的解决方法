@@ -1,0 +1,23 @@
+通常在Android中，滑动视图的用法如下：
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/cFFF0F0F0"
+        android:overScrollMode="never"
+        android:scrollbarThumbVertical="@drawable/shape_scroll_bar"
+        android:scrollbars="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+   </ScrollView>     
+如果你按照上面写法，当LinearLayout的内容比较大时，可能会出现ScrollView初始位置不在顶部的问题。
+
+那怎么解决这个问题呢，方法是，在ScrollView内嵌套的LinearLayout布局中增加以下代码：
+
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+这样的话，我们就可以让ScrollView的顶部元件获得焦点，从而达到了目的。
