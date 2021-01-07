@@ -1,4 +1,6 @@
 
+
+
 什么是 iconfont？
 icon font ，图标字体，也叫字体图标，顾名思义，就是字体做的图标。受到近些年 扁平化设计 的影响，越来越多的图标都开始使用 icon font
 
@@ -16,7 +18,6 @@ icon font ，图标字体，也叫字体图标，顾名思义，就是字体做�
 
 创作自已的字体图标很费时间，重构人员后期维护的成本偏高。
 
-作者：不二很纯洁
-链接：https://www.jianshu.com/p/aabf03b150c7
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+美团技术团队使用图标用的iconfont
+https://tech.meituan.com/2020/11/26/consistency-in-ui-design.html
