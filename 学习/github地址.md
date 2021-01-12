@@ -8,3 +8,5 @@ https://github.com/emmanuelkehinde/TwittaSave-Android
 
 
 https://github.com/dawei101/shadowsocks-android-java
+
+https://github.com/shadowsocks/shadowsocks-android
