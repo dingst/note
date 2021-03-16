@@ -11,3 +11,6 @@ https://github.com/antoniolg/Kotlin-for-Android-Developers
 
 在 Java 中调用 Kotlin 语言的方法
 https://zhuanlan.zhihu.com/p/27632273
+
+
+kotlin版本升级方法，android studio中点击tools -> Kotlin -> Configure Kotlin Plugin Updates，进行升级！
