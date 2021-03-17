@@ -14,3 +14,7 @@ https://zhuanlan.zhihu.com/p/27632273
 
 
 6，kotlin版本升级方法，android studio中点击tools -> Kotlin -> Configure Kotlin Plugin Updates，进行升级！
+
+7, kotlin中使用aroute需要注意的地方：module中添加apply plugin: 'kotlin-kapt'
+使用kapt方式引用arouter库
+具体参考：https://blog.csdn.net/caicai1377/article/details/111375722
