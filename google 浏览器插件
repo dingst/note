@@ -1,1 +1,3 @@
-Sourcegraph for GitHub 方便阅读代码的插件
+1，Sourcegraph for GitHub 方便阅读代码的插件
+
+2，axure 插件安装，直接在原型里找到resources/chrome/文件名.crx， 然后使用mac 终端执行 unzip  文件名.crx -d CHarset，然后使用chrome浏览器加载charset文件夹即可！
